@@ -1,12 +1,5 @@
 streamlit
 pandas
 numpy
-datetime
 requests
-json
-time
-urllib.parse
-urllib.request
 openai
-os
-dotenv
