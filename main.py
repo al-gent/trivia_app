@@ -9,9 +9,10 @@ import urllib.parse
 import urllib.request
 from openai import OpenAI
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
+
+st.write("wiki_key", st.secrets["wiki_key"])
+
 
 st.title('Trivia Questions For Right Now')
 today = datetime.datetime.now()
@@ -19,8 +20,8 @@ date = today.strftime('%Y/%m/%d')
 
 language_code = 'en' # English
 headers = {
-    'Authorization': os.getenv('wiki_key'),
-    'User-Agent': os.getenv('USER_AGENT')
+    'Authorization': st.secrets["wiki_key"],
+    'User-Agent': st.secrets["User-Agent"]
 }
 
 base_url = 'https://api.wikimedia.org/feed/v1/wikipedia/'
@@ -40,14 +41,14 @@ for i in response['mostread']['articles'][:2]:
 
 st.text(titles)
 
-apikey=os.getenv('gnews_key')
 
+gnews_key=st.secrets["gnews_key"]
 all_contexts=[]
 
 for title in titles:
     context=[]
     print(title)
-    url = f'https://gnews.io/api/v4/search?q="{urllib.parse.quote(title)}"&lang=en&country=us&max=10&apikey={apikey}'
+    url = f'https://gnews.io/api/v4/search?q="{urllib.parse.quote(title)}"&lang=en&country=us&max=10&apikey={gnews_key}'
     with urllib.request.urlopen(url) as res:
         data = json.loads(res.read().decode("utf-8"))
         articles = data["articles"]
