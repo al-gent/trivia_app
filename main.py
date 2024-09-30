@@ -11,9 +11,6 @@ from openai import OpenAI
 import os
 
 
-st.write("wiki_key", st.secrets["wiki_key"])
-
-
 st.title('Trivia Questions For Right Now')
 today = datetime.datetime.now()
 date = today.strftime('%Y/%m/%d')
@@ -39,7 +36,6 @@ for i in response['mostread']['articles'][:2]:
        extracts.append(i['extract'])
        links.append(i)
 
-st.text(titles)
 
 
 gnews_key=st.secrets["gnews_key"]
@@ -58,7 +54,6 @@ for title in titles:
             context.append(articles[1]['content'])
             context.append(articles[2]['content'])
             all_contexts.append(context)
-    st.text(context)
     time.sleep(1)
 
 
