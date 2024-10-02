@@ -10,6 +10,9 @@ import urllib.request
 from openai import OpenAI
 import os
 
+image_path = "./logo.webp"  
+st.image(image_path, caption="logo", use_column_width=True)
+
 st.title('Trivia Questions For Right Now')
 
 @st.cache_data
