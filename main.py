@@ -85,8 +85,6 @@ res =generate_questions(extracts, news)
 for QA in res:
     if QA != 'pass':
         question, answer = QA.split('\nA: ')
-        st.markdown(f"### Question:\n\n{question}")  # Larger font size for the question
-        with st.expander("Show Answer"):  # Expander to hide the answer
-            st.markdown(f"**Answer:**\n\n{answer}")  # Display the answer inside the expander
-        st.markdown("---")  
+        with st.expander({question}):  # Expander to hide the answer
+            st.markdown({answer})  # Display the answer inside the expande
 
