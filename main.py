@@ -85,6 +85,6 @@ res =generate_questions(extracts, news)
 for QA in res:
     if QA != 'pass':
         question, answer = QA.split('\nA: ')
-        with st.expander(f"{question}"):  # Corrected with an f-string
+        with st.expander(f"{question[3:]}"):  # Corrected with an f-string
             st.markdown(f"{answer}")  # Use f-string here as well to display the answer
 
