@@ -59,6 +59,7 @@ def find_corresponding_news(titles, n, m):
         all_str_context.append(strcontext)
     return all_str_context
 
+@st.cache_data
 def generate_questions(background, news):
     client = OpenAI()
     res=[]
