@@ -48,7 +48,7 @@ def find_corresponding_news(titles, n, m):
         url = f'https://gnews.io/api/v4/search?q="{urllib.parse.quote(title)}"&lang=en&country=us&max={m}&apikey={gnews_key}'
         with urllib.request.urlopen(url) as res:
             data = json.loads(res.read().decode("utf-8"))
-            for i in range(m):
+            for i in range(len(data['articles'])):
                 context.append(data["articles"][i]['content'])
         time.sleep(1)
         all_contexts.append(context)
