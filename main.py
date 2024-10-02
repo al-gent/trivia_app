@@ -79,8 +79,8 @@ def generate_questions(background, news):
         res.append(completion.choices[0].message.content)
     return res
 
-titles, extracts = wiki_trending_today(2)
-news = find_corresponding_news(titles, 2, 2)
+titles, extracts = wiki_trending_today(5)
+news = find_corresponding_news(titles, 5, 5)
 res =generate_questions(extracts, news)
 for QA in res:
     if QA != 'pass':
