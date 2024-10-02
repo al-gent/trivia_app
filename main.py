@@ -12,6 +12,7 @@ import os
 
 image_path = "./logo.webp"  
 st.image(image_path, caption="logo", use_column_width=True)
+st.set_page_config(page_title='Triviamatic', page_icon='logo.webp')
 
 st.title('Trivia Questions For Right Now')
 
