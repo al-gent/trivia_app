@@ -75,7 +75,7 @@ def generate_questions(background, news):
             messages=[
                 {"role": "system", "content": "You are a beloved charismatic host of trivia at your local bar.Your job is to ask trivia questions using the context provided and then also provide the correct answer."},
                 {"role": "system", "content": "Format your response like Q: question newline A: answer"},
-                {"role": "system", "content": "Use this as context for your question:" + b + '\n' + n},
+                {"role": "system", "content": "Use this as context for your question:" + n + '\n' + b},
                 {"role": "user", "content": "Based on the context, please ask your audience a question and provide the correct answer afterward."},
                 {"role": "system", "content": "If your question contains themes of violence, simply respond 'pass' "},
             ]
