@@ -17,7 +17,6 @@ st.image(image_path, caption="logo", width=300)
 
 st.title('Trivia Questions For Right Now')
 
-@st.cache_data
 def wiki_trending_today(n):
     """Grab n trending wikipedia articles from today
     Returns a tuple, (titles, extracts)"""
@@ -41,7 +40,8 @@ def wiki_trending_today(n):
             extracts.append(i['extract'])
     return titles, extracts
 
-@st.cache_data
+
+@st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
 def find_corresponding_news(titles, n, m):
     """given a list of titles, collect news articles corresponding to the first n titles
     Returns a list of strings, where each string can be used as a context for LLM
@@ -65,7 +65,7 @@ def find_corresponding_news(titles, n, m):
         all_str_context.append(strcontext)
     return all_str_context
 
-@st.cache_data
+@st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
 def generate_questions(background, news):
     client = OpenAI()
     res=[]
@@ -90,6 +90,6 @@ res =generate_questions(extracts, news)
 for QA in res:
     if QA != 'pass':
         question, answer = QA.split('\nA: ')
-        with st.expander(f"{question[3:]}"):  # Corrected with an f-string
-            st.markdown(f"{answer}")  # Use f-string here as well to display the answer
+        with st.expander(f"{question[3:]}"):
+            st.markdown(f"{answer}") 
 
