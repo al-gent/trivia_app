@@ -32,6 +32,7 @@ def wiki_trending_today(n):
     url = base_url + language_code + '/featured/' + date
     response = requests.get(url, headers=headers)
     response = json.loads(response.text)
+    print(response.text)  # Log the actual response to see what's being returned
     titles= []
     extracts=[]
     for i in response['mostread']['articles'][:n]:
