@@ -42,7 +42,7 @@ def wiki_trending_today(n):
     return titles, extracts
 
 
-@st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
+# @st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
 def find_corresponding_news(titles, n, m):
     """given a list of titles, collect news articles corresponding to the first n titles
     Returns a list of strings, where each string can be used as a context for LLM
@@ -66,7 +66,7 @@ def find_corresponding_news(titles, n, m):
         all_str_context.append(strcontext)
     return all_str_context
 
-@st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
+# @st.cache_data(ttl=3600)  # Cache expires after 1 hour (3600 seconds)
 def generate_questions(background, news):
     client = OpenAI()
     res=[]
